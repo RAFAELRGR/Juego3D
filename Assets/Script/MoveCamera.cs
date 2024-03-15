@@ -33,5 +33,8 @@ public class MoveCamera : MonoBehaviour
         //applying both rotations
         transform.localRotation = Quaternion.Euler(xRotation, YRotation, 0f);
 
+        //Sebastian es un sabiondo 
+
+
     }
 }
