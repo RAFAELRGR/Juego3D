@@ -6873,11 +6873,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 456686, guid: f5e0cbdf315769444b681d95cd50abec, type: 3}
   m_PrefabInstance: {fileID: 165464287}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &165524368 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -5477749408508380018, guid: 6278424b57ee67c428d3858029dcfabc, type: 3}
-  m_PrefabInstance: {fileID: 72164112}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &166796886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66512,7 +66507,6 @@ GameObject:
   - component: {fileID: 1708412305}
   - component: {fileID: 1708412304}
   - component: {fileID: 1708412303}
-  - component: {fileID: 1708412307}
   m_Layer: 6
   m_Name: Player3
   m_TagString: Player
@@ -66597,19 +66591,6 @@ Transform:
   - {fileID: 1467984760}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1708412307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1708412302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da856aacfd232e44ebb5b81e42bb3368, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 165524368}
 --- !u!1001 &1711655776
 PrefabInstance:
   m_ObjectHideFlags: 0
