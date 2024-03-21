@@ -6873,6 +6873,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 456686, guid: f5e0cbdf315769444b681d95cd50abec, type: 3}
   m_PrefabInstance: {fileID: 165464287}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &165524368 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -5477749408508380018, guid: 6278424b57ee67c428d3858029dcfabc, type: 3}
+  m_PrefabInstance: {fileID: 72164112}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &166796886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42665,6 +42670,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 418296, guid: f44a0a8cf86c4624faaaa432ee3b78ae, type: 3}
   m_PrefabInstance: {fileID: 1121625288}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1123311338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1123311339}
+  m_Layer: 0
+  m_Name: GroundCkeck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1123311339
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123311338}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.82791543, y: 0.85661364, z: -7.814559}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1127452507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66476,6 +66512,7 @@ GameObject:
   - component: {fileID: 1708412305}
   - component: {fileID: 1708412304}
   - component: {fileID: 1708412303}
+  - component: {fileID: 1708412307}
   m_Layer: 6
   m_Name: Player3
   m_TagString: Player
@@ -66498,8 +66535,8 @@ MonoBehaviour:
   controller: {fileID: 1708412305}
   speed: 3
   gravity: -19.62
-  jumpHeight: 1.5
-  groundCheck: {fileID: 1939259354}
+  jumpHeight: 1
+  groundCheck: {fileID: 1123311339}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
@@ -66558,9 +66595,21 @@ Transform:
   m_Children:
   - {fileID: 276983194}
   - {fileID: 1467984760}
-  - {fileID: 1939259354}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1708412307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708412302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da856aacfd232e44ebb5b81e42bb3368, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 165524368}
 --- !u!1001 &1711655776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75747,37 +75796,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 449432, guid: 390c2bf1514a09e49a2aa0361d9e314c, type: 3}
   m_PrefabInstance: {fileID: 1938738088}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1939259353
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1939259354}
-  m_Layer: 6
-  m_Name: GroundCheck (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1939259354
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1939259353}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.5694635, y: 1.2469448, z: 4.4697924}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1708412306}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1941333735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83386,3 +83404,4 @@ SceneRoots:
   - {fileID: 1839163006}
   - {fileID: 206115591}
   - {fileID: 1708412306}
+  - {fileID: 1123311339}
