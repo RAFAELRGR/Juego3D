@@ -8,6 +8,7 @@ public class GroundCheck : MonoBehaviour
     Vector3 distance;
     void Start()
     {
+
         distance = transform.position - player.position;
     }
 
