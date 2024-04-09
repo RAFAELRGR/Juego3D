@@ -20,7 +20,7 @@ public class PlayerInteraction : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, Vector3.down, out hit, 1))
+        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit))
         {
             OnInteractableHit(hit);
         }
@@ -29,7 +29,10 @@ public class PlayerInteraction : MonoBehaviour
     void OnInteractableHit(RaycastHit hit)
     {
         Collider other = hit.collider;
-        if (other.tag == "Land") 
+
+        var distance = hit.transform.position - playerController.transform.position;
+
+        if (other.tag == "Land" && distance.magnitude <= 4f) 
         {
             Land land = other.GetComponent<Land>();
             SelectLand(land);
@@ -54,6 +57,17 @@ public class PlayerInteraction : MonoBehaviour
 
         selectedLand = land;
         land.Select(true);
+    }
+
+    public void Interact()
+    {
+        if (selectedLand != null)
+        {
+            selectedLand.Interact();
+            return;
+        }
+
+        Debug.Log("Not on any Ready Land");
     }
 
 }

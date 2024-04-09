@@ -16,6 +16,8 @@ public class Move : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
 
+    PlayerInteraction playerInteraction;
+
     Vector3 velocity;
 
     bool isGrounded;
@@ -49,5 +51,17 @@ public class Move : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+
+        Interact();
+
+        playerInteraction = GetComponentInChildren<PlayerInteraction>();
+
+    }
+
+    public void Interact()
+    {
+        if (Input.GetButtonDown("Fire1")){
+            playerInteraction.Interact();
+        }
     }
 }

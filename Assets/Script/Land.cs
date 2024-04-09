@@ -56,4 +56,9 @@ public class Land : MonoBehaviour
         select.SetActive(toggle);
     }
 
+    public void Interact()
+    {
+        Debug.Log("Interact");
+    }
+
 }
