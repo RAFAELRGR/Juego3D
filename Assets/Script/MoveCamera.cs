@@ -13,7 +13,7 @@ public class MoveCamera : MonoBehaviour
     void Start()
     {
         //Locking the cursor to the middle of the screen and making it invisible
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
