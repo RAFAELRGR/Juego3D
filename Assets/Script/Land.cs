@@ -68,12 +68,12 @@ public class Land : MonoBehaviour
                 SwitchLandStatus(LandStatus.land);
             }
 
-            else if (landStatus == LandStatus.land && Input.GetKeyDown(KeyCode.G))
+            else if (landStatus == LandStatus.land && Input.GetKey(KeyCode.G))
             {
                 SwitchLandStatus(LandStatus.landready);
             }
 
-            else if (landStatus == LandStatus.landready && Input.GetKeyDown(KeyCode.R))
+            else if (landStatus == LandStatus.landready && Input.GetKey(KeyCode.R))
             {
                 SwitchLandStatus(LandStatus.landnormal);
             }

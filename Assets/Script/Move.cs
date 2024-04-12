@@ -60,7 +60,8 @@ public class Move : MonoBehaviour
 
     public void Interact()
     {
-        if (Input.GetButtonDown("Fire1")){
+        if (Input.GetButtonDown("Fire1"))
+        {
             playerInteraction.Interact();
         }
     }
