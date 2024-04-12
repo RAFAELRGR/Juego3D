@@ -8,12 +8,13 @@ public class Land : MonoBehaviour
     public enum LandStatus
     {
         land,
-        landready
+        landready,
+        landnormal
     }
 
     public LandStatus landStatus;
 
-    public Material landmat, landreadymat;
+    public Material landmat, landreadymat, landnormalmat;
     new Renderer renderer;
     GameObject select;
 
@@ -22,7 +23,7 @@ public class Land : MonoBehaviour
     {
         select = transform.Find("Cube").gameObject;
         renderer = GetComponent<Renderer>();
-        SwitchLandStatus(LandStatus.land);
+        SwitchLandStatus(landStatus);
     }
 
     // Update is called once per frame
@@ -35,10 +36,13 @@ public class Land : MonoBehaviour
     {
         landStatus = statusToSwitch;
 
-        Material materialToSwitch = landmat;
+        Material materialToSwitch = landnormalmat;
 
         switch (statusToSwitch)
         {
+            case LandStatus.landnormal:
+                materialToSwitch = landnormalmat;
+                break;
             case LandStatus.land:
                 materialToSwitch = landmat;
                 break;
@@ -58,7 +62,18 @@ public class Land : MonoBehaviour
 
     public void Interact()
     {
-        Debug.Log("Interact");
+        
+        if(landStatus == LandStatus.landnormal)
+        {
+            SwitchLandStatus(LandStatus.land);   
+        }else if (landStatus == LandStatus.land)
+        {
+            SwitchLandStatus(LandStatus.landready);
+        }else if (landStatus == LandStatus.landready)
+        {
+            SwitchLandStatus(LandStatus.landnormal);
+        }
+
     }
 
 }
