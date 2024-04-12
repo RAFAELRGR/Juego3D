@@ -29,6 +29,24 @@ public class UIManager : MonoBehaviour
         RenderInventory();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.I))
+        {
+            ToggleInventoryPanel();
+        }
+
+        if (inventoryPanel.active == true)
+        {
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.visible = false;
+        }
+
+    }
+
     public void RenderInventory()
     {
         ItemData[] inventoryToolSlots = InventoryManager.Instance.tools;
@@ -52,9 +70,11 @@ public class UIManager : MonoBehaviour
 
     public void ToggleInventoryPanel()
     {
-        inventoryPanel.SetActive(!inventoryPanel.activeSelf);
 
-        RenderInventory();
+            inventoryPanel.SetActive(!inventoryPanel.activeSelf);
+
+            RenderInventory();
+
     }
 
 }

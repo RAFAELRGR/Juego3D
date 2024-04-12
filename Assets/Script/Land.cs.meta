@@ -3,7 +3,10 @@ guid: 0b76de1ad5503ab46811c51e6d769580
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - landmat: {fileID: 2100000, guid: 55d9820d92ac7464998442cd3b91799b, type: 2}
+  - landreadymat: {fileID: 2100000, guid: 182d5c05b0a7ca7499ad0adb20ec72e4, type: 2}
+  - landnormalmat: {fileID: 2100000, guid: fa8eda4ec55ee1a4e99ca991c5828dbf, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
