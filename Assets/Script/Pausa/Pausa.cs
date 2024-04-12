@@ -6,6 +6,7 @@ public class Pausa : MonoBehaviour
 {
     public GameObject ObjetoMenuPausa;
     public bool pausa = false;
+    public GameObject PlayerInteraction;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,17 +26,25 @@ public class Pausa : MonoBehaviour
                 Time.timeScale = 0;
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
+
+                PlayerInteraction.SetActive(false);
             }
         }
     }
+
+
 
     public void Reanudar()
     {
         ObjetoMenuPausa.SetActive(false);
         pausa = false;
 
+        Debug.Log("ReanudarJuego() llamado.");
+
         Time.timeScale = 1;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        PlayerInteraction.SetActive(true);
     }
 }
