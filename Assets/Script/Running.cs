@@ -9,6 +9,7 @@ public class running : MonoBehaviour
     public float speedback;
     public float speedleft;
     public float speedright;
+    public int jump;
 
     private void Start()
     {
@@ -21,6 +22,7 @@ public class running : MonoBehaviour
         animator.SetFloat("SpeedBack", speedback);
         animator.SetFloat("SpeedLeft", speedleft);
         animator.SetFloat("SpeedRight", speedright);
+        animator.SetInteger("Jump", jump);
 
         if (Input.GetKey(KeyCode.W))
             speed = 1;
@@ -41,6 +43,11 @@ public class running : MonoBehaviour
             speedright = 1;
         else
             speedright = 0;
+
+        if (Input.GetKey(KeyCode.Space))
+            jump = 1;
+        else 
+            jump = 0;
 
     }
 }
