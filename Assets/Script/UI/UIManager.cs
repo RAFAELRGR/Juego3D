@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
             ToggleInventoryPanel();
         }
 
-        if (inventoryPanel.active == true)
+        if (inventoryPanel.activeSelf == true)
         {
             Cursor.visible = true;
         }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Pausa : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class Pausa : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if(pausa == false)
             {
@@ -28,6 +29,10 @@ public class Pausa : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
 
                 PlayerInteraction.SetActive(false);
+            }
+            else if (pausa == true)
+            {
+                Reanudar();
             }
         }
     }
@@ -46,5 +51,17 @@ public class Pausa : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         PlayerInteraction.SetActive(true);
+    }
+
+    public void IrMenuPrincipal(string Menu) 
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(Menu);
+    }
+
+    public void Salir()
+    {
+        Application.Quit();
+        Debug.Log("Se Cierra el Juego");
     }
 }
