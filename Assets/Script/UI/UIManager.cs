@@ -39,10 +39,12 @@ public class UIManager : MonoBehaviour
         if (inventoryPanel.activeSelf == true)
         {
             Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
         else
         {
             Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
     }
@@ -64,16 +66,28 @@ public class UIManager : MonoBehaviour
     {
         for (int i = 0; i < uiSlots.Length; i++)
         {
-            uiSlots[i].Display(slots[i]);
+            // Asegúrate de que tanto el slot como el uiSlot no son null.
+            if (slots != null && slots[i] != null && uiSlots[i] != null)
+            {
+                uiSlots[i].Display(slots[i]);
+            }
+            else
+            {
+                // Manejar el caso en que el slot o el uiSlot sean null.
+                // Por ejemplo, podrías querer desactivar el uiSlot o mostrar un mensaje de error.
+                if (uiSlots[i] != null)
+                {
+                    uiSlots[i].Display(null);
+                }
+            }
         }
     }
 
     public void ToggleInventoryPanel()
     {
+        inventoryPanel.SetActive(!inventoryPanel.activeSelf);
 
-            inventoryPanel.SetActive(!inventoryPanel.activeSelf);
-
-            RenderInventory();
+        RenderInventory();
 
     }
 

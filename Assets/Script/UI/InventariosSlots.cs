@@ -14,27 +14,27 @@ public class InventariosSlots : MonoBehaviour, IDropHandler
 
     public void Display(ItemData itemToDisplay)
     {
-        if (itemToDisplay != null)
+        if (itemToDisplay != null && itemToDisplay.thumbnail != null)
         {
             itemDisplayImage.sprite = itemToDisplay.thumbnail;
-
             this.itemToDisplay = itemToDisplay;
-
             itemDisplayImage.gameObject.SetActive(true);
-
-            return;
         }
-
-        itemDisplayImage.gameObject.SetActive(false);
+        else
+        {
+            itemDisplayImage.gameObject.SetActive(false);
+        }
     }
-
     public void OnDrop(PointerEventData eventData)
     {
         if (transform.childCount == 0)
         {
-            ObjetosInventario objetosInventario = eventData.pointerDrag.GetComponent<ObjetosInventario>();
-            objetosInventario.parentAfterDrag = transform;
+          ObjetosInventario objetosInventario = eventData.pointerDrag.GetComponent<ObjetosInventario>();
+          //objetosInventario.parentAfterDrag = transform.parent;
+          objetosInventario.transform.SetParent(transform);
+          Debug.Log(transform);
         }
+
     }
 
 
