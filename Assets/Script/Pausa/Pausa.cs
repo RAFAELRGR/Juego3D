@@ -7,6 +7,7 @@ public class Pausa : MonoBehaviour
 {
     public GameObject ObjetoMenuPausa;
     public bool pausa = false;
+    public GameObject MenuSalir;
     public GameObject PlayerInteraction;
     // Start is called before the first frame update
     void Start()
@@ -42,9 +43,13 @@ public class Pausa : MonoBehaviour
     public void Reanudar()
     {
         ObjetoMenuPausa.SetActive(false);
+        MenuSalir.SetActive(false);
+
         pausa = false;
 
         Debug.Log("ReanudarJuego() llamado.");
+
+        
 
         Time.timeScale = 1;
         Cursor.visible = false;
