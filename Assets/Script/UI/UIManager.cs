@@ -44,7 +44,7 @@ public class UIManager : MonoBehaviour
         else
         {
             Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Confined;
         }
 
     }
