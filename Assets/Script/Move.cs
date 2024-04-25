@@ -15,6 +15,7 @@ public class Move : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
+    public Pausa Pausa;
 
     PlayerInteraction playerInteraction;
 
@@ -52,7 +53,7 @@ public class Move : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
-        Interact();
+            Interact();
 
         playerInteraction = GetComponentInChildren<PlayerInteraction>();
 
@@ -60,9 +61,10 @@ public class Move : MonoBehaviour
 
     public void Interact()
     {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            playerInteraction.Interact();
-        }
+            if (Input.GetButtonDown("Fire1"))
+            {
+                playerInteraction.Interact();
+            }
     }
+
 }

@@ -28,7 +28,6 @@ public class Pausa : MonoBehaviour
                 Time.timeScale = 0;
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
-
                 PlayerInteraction.SetActive(false);
             }
             else if (pausa == true)
