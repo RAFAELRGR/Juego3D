@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,11 @@ public class Land : MonoBehaviour
     public Material landmat, landreadymat, landnormalmat;
     new Renderer renderer;
     GameObject select;
+    public InventoryManager inventoryManager;
+    public GameObject flower, seeds, stem;
+    public ItemData itemtoPickUp;
+    public bool seedaplicated = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +35,7 @@ public class Land : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void SwitchLandStatus(LandStatus statusToSwitch)
@@ -62,22 +68,49 @@ public class Land : MonoBehaviour
 
     public void Interact()
     {
+        ItemData recievedItem = inventoryManager.GetSelectedItem(false);
 
-            if (landStatus == LandStatus.landnormal && Input.GetKey(KeyCode.F))
-            {
-                SwitchLandStatus(LandStatus.land);
-            }
+        if (recievedItem == null)
+        {
+            Debug.Log("No hay nada seleccionado");
+        }
+        else if (landStatus == LandStatus.landnormal && Input.GetKey(KeyCode.F) && recievedItem.itemType == ItemData.ItemType.Scythe)
+        {
+            SwitchLandStatus(LandStatus.land);
+        }
 
-            else if (landStatus == LandStatus.land && Input.GetKey(KeyCode.G))
-            {
-                SwitchLandStatus(LandStatus.landready);
-            }
+        if (recievedItem.itemType == ItemData.ItemType.seed && Input.GetKey(KeyCode.L))
+        {
+            seeds = recievedItem.gameModel;
+            seedaplicated = true;
+            stem.SetActive(true);
+        }
 
-            else if (landStatus == LandStatus.landready && Input.GetKey(KeyCode.R))
+        else if (landStatus == LandStatus.land && Input.GetKey(KeyCode.G) && recievedItem.itemType == ItemData.ItemType.WaterBucket && seedaplicated == true)
+        {
+            SwitchLandStatus(LandStatus.landready);
+            stem.SetActive(false);
+            flower.SetActive(true);
+        }
+
+        else if (landStatus == LandStatus.landready && Input.GetKey(KeyCode.R) && recievedItem.itemType == ItemData.ItemType.Shovel)
+        {
+            SwitchLandStatus(LandStatus.landnormal);
+            flower.SetActive(false);
+            var seed = Environment.TickCount;
+            var random = new System.Random(seed);
+            int repeat = random.Next(1, 5);
+            for(int i = 0; i < repeat; i++)
             {
-                SwitchLandStatus(LandStatus.landnormal);
+                bool result = InventoryManager.instance.AddItem(itemtoPickUp);
+                if (result == true)
+                {
+                    Debug.Log("Item Añadido");
+                }
             }
-  
+            seedaplicated = false;
+            seeds = null;
+        }
 
     }
 

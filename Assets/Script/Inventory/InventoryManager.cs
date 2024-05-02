@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+
+    public static InventoryManager instance;
+
     public int maxStackedItems = 5;
     public InventorySlot[] inventorySlot;
     public GameObject inventoryItemPrefab;
     public GameObject InventoryPanel;
 
     int selectedSlot = -1;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public void Start()
     {

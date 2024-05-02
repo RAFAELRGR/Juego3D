@@ -16,4 +16,11 @@ public class ItemData : ScriptableObject
 
     public bool Stackeable = true;
 
+    public enum ItemType
+    {
+        WaterBucket, Pitchfork, Rake, Scythe, Shovel, seed, potato
+    }
+
+    public ItemType itemType;
+
 }

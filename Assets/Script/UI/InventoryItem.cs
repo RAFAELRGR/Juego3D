@@ -23,7 +23,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     public void RefreshCount()
     {
         countText.text = count.ToString();
-        bool textActive = false;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
