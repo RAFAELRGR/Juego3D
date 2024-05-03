@@ -10,6 +10,7 @@ public class Shop : MonoBehaviour
     public InventoryManager inventoryManager;
     public bool option;
     public GameObject NohayPlata;
+    public GameObject ConfirmacionCompra;
     public bool selecteditem;
 
     public void removemoney(int value)
@@ -33,6 +34,7 @@ public class Shop : MonoBehaviour
             bool result = InventoryManager.instance.AddItem(itemData);
             if (result == true)
             {
+                ConfirmacionCompra.SetActive(true);
             }
         }
         else
