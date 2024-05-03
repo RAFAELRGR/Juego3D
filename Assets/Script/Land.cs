@@ -105,7 +105,6 @@ public class Land : MonoBehaviour
                 bool result = InventoryManager.instance.AddItem(itemtoPickUp);
                 if (result == true)
                 {
-                    Debug.Log("Item Añadido");
                 }
             }
             seedaplicated = false;

@@ -10,6 +10,7 @@ public class Shop : MonoBehaviour
     public InventoryManager inventoryManager;
     public bool option;
     public GameObject NohayPlata;
+    public bool selecteditem;
 
     public void removemoney(int value)
     {
@@ -32,24 +33,34 @@ public class Shop : MonoBehaviour
             bool result = InventoryManager.instance.AddItem(itemData);
             if (result == true)
             {
-                Debug.Log("Añadio Item");
             }
         }
         else
         {
-            Debug.Log("No hay plata");
             NohayPlata.SetActive(true);
+        }
+    }
+
+    public void detecttype(ItemData itemType)
+    {
+        if (itemType == inventoryManager.GetSelectedItem(false))
+        {
+            selecteditem = true;
+        }
+        else
+        {
+            selecteditem = false;
         }
     }
 
     public void sellitem(int value)
     {
-        if (inventoryManager.GetSelectedItem(true))
+        if (inventoryManager.GetSelectedItem(false) && selecteditem == true)
         {
+            inventoryManager.GetSelectedItem(true);
             Money.instance2.money += value;
         }else
         {
-            Debug.Log("No hay nada para vender");
         }
     }
 

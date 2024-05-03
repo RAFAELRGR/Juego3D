@@ -15,7 +15,6 @@ public class Tools : MonoBehaviour
             bool result = InventoryManager.instance.AddItem(itemToPickup);
             if (result == true)
             {
-                Debug.Log("Item Añadido");
                 Destroy(capsuleCollider);
                 Destroy(GameObject);
             }

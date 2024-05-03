@@ -18,6 +18,6 @@ MonoBehaviour:
   Stackeable: 1
   Money: 0
   MoneySell: 0
-  itemType: 0
+  itemType: 6
   daysToGrow: 0
   Moneyseed: 0

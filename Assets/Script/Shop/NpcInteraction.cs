@@ -4,15 +4,16 @@ public class NpcInteraction : MonoBehaviour
 {
     public GameObject TiendaUI;
     private bool show = false;
+    public MoveCamera move;
 
     // Se llama cuando otro objeto entra en el trigger
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            Cursor.visible = true;
-            Debug.Log("¡El jugador está cerca del NPC!");
+            move.enabled = false;
             show = true;
+
         }
     }
 
@@ -21,8 +22,8 @@ public class NpcInteraction : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("¡El jugador se alejó del NPC!");
             show = false;
+            move.enabled=true;
             Cursor.visible = false;
         }
     }

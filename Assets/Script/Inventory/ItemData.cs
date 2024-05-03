@@ -22,7 +22,7 @@ public class ItemData : ScriptableObject
 
     public enum ItemType
     {
-        WaterBucket, Pitchfork, Rake, Scythe, Shovel, seed, potato
+        WaterBucket, Pitchfork, Rake, Scythe, Shovel, seed, seed2, potato
     }
 
     public ItemType itemType;

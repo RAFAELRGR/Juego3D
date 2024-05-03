@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Move : MonoBehaviour
 {
@@ -45,6 +46,7 @@ public class Move : MonoBehaviour
 
         //right is the red Axis, foward is the blue axis
         Vector3 move = transform.right * x + transform.forward * z;
+        move = Vector3.ProjectOnPlane(move, Vector3.up);
 
         controller.Move(move * speed * Time.deltaTime);
 
