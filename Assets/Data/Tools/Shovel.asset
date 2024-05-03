@@ -15,5 +15,7 @@ MonoBehaviour:
   description: 
   thumbnail: {fileID: 21300000, guid: 00a58e329b37a5c4b84e4e1f2578f66f, type: 3}
   gameModel: {fileID: 0}
-  Stackeable: 1
+  Stackeable: 0
+  Money: 20
+  MoneySell: 0
   itemType: 4
