@@ -1,44 +1,129 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class InventoryManager : MonoBehaviour
 {
-    public ObjetosInventario ObjetosInventario { get; private set; }
 
-    public static InventoryManager Instance { get; private set; }
+    public static InventoryManager instance;
 
-    public static UIManager UIManager { get; private set; }
+    public int maxStackedItems = 5;
+    public InventorySlot[] inventorySlot;
+    public GameObject inventoryItemPrefab;
+    public GameObject InventoryPanel;
+
+    int selectedSlot = -1;
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
+        instance = this;
     }
 
-    public ItemData[] tools = new ItemData[18];
-    public ItemData[] equippedtool = new ItemData[6];
-    private PointerEventData eventData;
-
-    // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        
+        ChangeSelectedSlot(18);
+    }
+    private void Update()
+    {
+        if(Input.inputString != null)
+        {
+            bool isNumber = int.TryParse(Input.inputString, out int number);
+            if(isNumber && number > 0 && number < 7)
+            {
+                ChangeSelectedSlot(number+17);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            ToggleInventoryPanel();
+        }
+
+        if (InventoryPanel.activeSelf == true)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }else
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+
     }
 
-    // Update is called once per frame
-    void Update()
+    void ChangeSelectedSlot(int newValue)
+    {
+        if(selectedSlot >= 0)
+        {
+            inventorySlot[selectedSlot].Deselect();
+        }
+
+        inventorySlot[newValue].Select();
+        selectedSlot = newValue;
+    }
+
+    public bool AddItem(ItemData item)
     {
 
+        for (int i = 0; i < inventorySlot.Length; i++)
+        {
+            InventorySlot slot = inventorySlot[i];
+            InventoryItem iteminSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (iteminSlot != null && iteminSlot.ItemData == item && iteminSlot.count < maxStackedItems && item.Stackeable == true)
+            {
+                iteminSlot.count++;
+                iteminSlot.RefreshCount();
+                return true;
+            }
+        }
+
+        for (int i = 0; i < inventorySlot.Length; i++)
+        {
+            InventorySlot slot = inventorySlot[i];
+            InventoryItem iteminSlot = slot.GetComponentInChildren<InventoryItem>();
+            if(iteminSlot == null)
+            {
+                SpawnNewItem(item, slot);
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
+    void SpawnNewItem(ItemData item, InventorySlot slot)
+    {
+        GameObject newItemGo = Instantiate(inventoryItemPrefab, slot.transform);
+        InventoryItem inventoryItem = newItemGo.GetComponent<InventoryItem>();
+        inventoryItem.InitialiseItem(item);
+    }
+
+    public void ToggleInventoryPanel()
+    {
+        InventoryPanel.SetActive(!InventoryPanel.activeSelf);
+    }
+
+    public ItemData GetSelectedItem(bool use)
+    {
+        InventorySlot slot = inventorySlot[selectedSlot];
+        InventoryItem iteminSlot = slot.GetComponentInChildren<InventoryItem>();
+        if (iteminSlot != null)
+        {
+            ItemData itemData = iteminSlot.ItemData;
+            if(use == true)
+            {
+                iteminSlot.count--;
+                if(iteminSlot.count <= 0)
+                {
+                    Destroy(iteminSlot.gameObject);
+                }else
+                    iteminSlot.RefreshCount();
+            }
+            return itemData;
+        }
+
+        return null;
     }
 
 }

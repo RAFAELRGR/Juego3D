@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(menuName ="Items/Item")]
 
@@ -12,5 +13,18 @@ public class ItemData : ScriptableObject
     public Sprite thumbnail;
 
     public GameObject gameModel;
+
+    public bool Stackeable = true;
+
+    public int Money;
+
+    public int MoneySell;
+
+    public enum ItemType
+    {
+        WaterBucket, Pitchfork, Rake, Scythe, Shovel, seed, seed2, potato
+    }
+
+    public ItemType itemType;
 
 }

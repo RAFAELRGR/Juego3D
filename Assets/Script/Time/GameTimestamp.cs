@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class GameTimestamp : MonoBehaviour
+public class GameTimestamp
 {
     public int day, hour, minute;
     public bool timesUp = false;

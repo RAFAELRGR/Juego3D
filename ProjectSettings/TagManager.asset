@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Land
   - Slot
+  - Terrain
   layers:
   - Default
   - TransparentFX

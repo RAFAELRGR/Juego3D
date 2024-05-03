@@ -66,8 +66,6 @@ public class PlayerInteraction : MonoBehaviour
             selectedLand.Interact();
             return;
         }
-
-        Debug.Log("Not on any Ready Land");
     }
 
 }
