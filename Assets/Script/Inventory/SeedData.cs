@@ -9,6 +9,6 @@ public class SeedData : ItemData
 
     public int daysToGrow;
 
-    public ItemData cropToYield;
+    public int Moneyseed;
 
 }
