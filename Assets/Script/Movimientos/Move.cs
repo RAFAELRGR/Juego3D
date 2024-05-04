@@ -97,9 +97,6 @@ public class Move : MonoBehaviour
                 pasos.Pause();
             }
         }
-
-
-
     }
 
     public void Interact()

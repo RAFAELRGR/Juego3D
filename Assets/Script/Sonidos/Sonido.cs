@@ -5,6 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class Sonido : MonoBehaviour
 {
-    public string name;
+    public new string name;
     public AudioClip clip;
 }

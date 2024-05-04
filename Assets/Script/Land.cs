@@ -13,6 +13,7 @@ public class Land : MonoBehaviour
         landnormal
     }
 
+
     public LandStatus landStatus;
 
     public Material landmat, landreadymat, landnormalmat;
@@ -22,6 +23,10 @@ public class Land : MonoBehaviour
     public GameObject flower, seeds, stem;
     public ItemData itemtoPickUp;
     public bool seedaplicated = false;
+    public bool phaseone = false;
+    public bool phasetwo = false;
+    public bool phasethree = false;
+    public bool phasefour = false;
 
 
     // Start is called before the first frame update
@@ -30,12 +35,6 @@ public class Land : MonoBehaviour
         select = transform.Find("Cube").gameObject;
         renderer = GetComponent<Renderer>();
         SwitchLandStatus(landStatus);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void SwitchLandStatus(LandStatus statusToSwitch)
@@ -69,6 +68,10 @@ public class Land : MonoBehaviour
     public void Interact()
     {
         ItemData recievedItem = inventoryManager.GetSelectedItem(false);
+        phaseone = false;
+        phasetwo = false;
+        phasethree = false;
+        phasefour = false;
 
         if (recievedItem == null)
         {
@@ -79,7 +82,7 @@ public class Land : MonoBehaviour
             SwitchLandStatus(LandStatus.land);
         }
 
-        if (recievedItem.itemType == ItemData.ItemType.seed && Input.GetKey(KeyCode.L))
+        else if (recievedItem.itemType == ItemData.ItemType.seed && Input.GetKey(KeyCode.L))
         {
             seeds = recievedItem.gameModel;
             seedaplicated = true;

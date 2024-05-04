@@ -7,6 +7,7 @@ public class Tools : MonoBehaviour
     public ItemData itemToPickup;
     public GameObject GameObject;
     public CapsuleCollider capsuleCollider;
+    public GameObject Player;
 
     private void OnTriggerEnter(Collider other)
     {
