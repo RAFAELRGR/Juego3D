@@ -16,9 +16,7 @@ public class ItemData : ScriptableObject
 
     public bool Stackeable = true;
 
-    public int Money;
-
-    public int MoneySell;
+    public int usestool;
 
     public enum ItemType
     {

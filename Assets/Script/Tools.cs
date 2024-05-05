@@ -8,6 +8,7 @@ public class Tools : MonoBehaviour
     public GameObject GameObject;
     public CapsuleCollider capsuleCollider;
     public GameObject Player;
+    public int toolmaxuses;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -21,4 +22,5 @@ public class Tools : MonoBehaviour
             }
         }
     }
+
 }

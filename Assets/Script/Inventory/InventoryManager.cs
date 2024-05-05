@@ -11,6 +11,7 @@ public class InventoryManager : MonoBehaviour
     public InventorySlot[] inventorySlot;
     public GameObject inventoryItemPrefab;
     public GameObject InventoryPanel;
+    public bool useitem = false;
 
     int selectedSlot = -1;
 
@@ -113,16 +114,21 @@ public class InventoryManager : MonoBehaviour
             ItemData itemData = iteminSlot.ItemData;
             if(use == true)
             {
-                iteminSlot.count--;
-                if(iteminSlot.count <= 0)
+                itemData.usestool -= 1;
+                if (itemData.usestool <= 0)
                 {
-                    Destroy(iteminSlot.gameObject);
-                }else
-                    iteminSlot.RefreshCount();
+                    iteminSlot.count--;
+                    if (iteminSlot.count <= 0)
+                    {
+                        Destroy(iteminSlot.gameObject);
+                    }
+                    else
+                        iteminSlot.RefreshCount();
+                }
             }
+            useitem = false;
             return itemData;
         }
-
         return null;
     }
 

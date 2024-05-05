@@ -13,10 +13,13 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     [HideInInspector] public Transform parentAfterDrag;
     [HideInInspector] public int count = 1;
 
-    public void InitialiseItem(ItemData newitemData)
+    public void InitialiseItem(ItemData itemData)
     {
-        ItemData = newitemData;
-        image.sprite = newitemData.thumbnail;
+        if (itemData.itemType != ItemData.ItemType.potato && itemData.itemType != ItemData.ItemType.seed && itemData.itemType != ItemData.ItemType.seed2)
+            ItemData = Instantiate(itemData);
+        else
+            ItemData = itemData;
+        image.sprite = itemData.thumbnail;
         RefreshCount();
     }
 

@@ -16,4 +16,5 @@ MonoBehaviour:
   thumbnail: {fileID: 21300000, guid: e6bf8fcb6ef64c5468a421d89351417c, type: 3}
   gameModel: {fileID: 0}
   Stackeable: 1
-  itemType: 6
+  usestool: 1
+  itemType: 7

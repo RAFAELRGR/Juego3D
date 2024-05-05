@@ -80,6 +80,7 @@ public class Land : MonoBehaviour
         else if (landStatus == LandStatus.landnormal && Input.GetKey(KeyCode.F) && recievedItem.itemType == ItemData.ItemType.Scythe)
         {
             SwitchLandStatus(LandStatus.land);
+            InventoryManager.instance.GetSelectedItem(true);
         }
 
         else if (recievedItem.itemType == ItemData.ItemType.seed && Input.GetKey(KeyCode.L))
@@ -87,6 +88,7 @@ public class Land : MonoBehaviour
             seeds = recievedItem.gameModel;
             seedaplicated = true;
             stem.SetActive(true);
+            InventoryManager.instance.GetSelectedItem(true);
         }
 
         else if (landStatus == LandStatus.land && Input.GetKey(KeyCode.G) && recievedItem.itemType == ItemData.ItemType.WaterBucket && seedaplicated == true)
@@ -94,6 +96,7 @@ public class Land : MonoBehaviour
             SwitchLandStatus(LandStatus.landready);
             stem.SetActive(false);
             flower.SetActive(true);
+            InventoryManager.instance.GetSelectedItem(true);
         }
 
         else if (landStatus == LandStatus.landready && Input.GetKey(KeyCode.R) && recievedItem.itemType == ItemData.ItemType.Shovel)
@@ -112,6 +115,7 @@ public class Land : MonoBehaviour
             }
             seedaplicated = false;
             seeds = null;
+            InventoryManager.instance.GetSelectedItem(true);
         }
 
     }

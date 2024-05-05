@@ -16,8 +16,7 @@ MonoBehaviour:
   thumbnail: {fileID: 21300000, guid: 7ed04e53d7238ba49afab7baedc67ec5, type: 3}
   gameModel: {fileID: 0}
   Stackeable: 1
-  Money: 0
-  MoneySell: 0
+  usestool: 1
   itemType: 6
   daysToGrow: 0
   Moneyseed: 0
