@@ -17,6 +17,7 @@ MonoBehaviour:
   gameModel: {fileID: 138022, guid: 5531f4125b2228c46bdce8ab64c9f714, type: 3}
   Stackeable: 1
   usestool: 1
+  nametool: Seeds_Blue
   itemType: 5
   daysToGrow: 3
   Moneyseed: 0

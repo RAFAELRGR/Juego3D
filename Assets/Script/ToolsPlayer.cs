@@ -5,14 +5,25 @@ using UnityEngine;
 
 public class ToolsPlayer : MonoBehaviour
 {
-
-    public ShowItems[] ShowItems;
-
     public void Update()
     {
-        for (int i = 0; i < ShowItems.Length; i++)
+        if(InventoryManager.instance.GetSelectedItem(false))
+            showtool(InventoryManager.instance.GetSelectedItem(false).nametool);
+    }
+
+    public void showtool(string nametool)
+    {
+        if (nametool != null)
         {
-                ShowItems[i].showitem();
+            foreach (Transform tool in transform)
+            {
+                if (nametool == tool.name)
+                {
+                    tool.gameObject.SetActive(true);
+                }
+                else
+                    tool.gameObject.SetActive(false);
+            }
         }
     }
 

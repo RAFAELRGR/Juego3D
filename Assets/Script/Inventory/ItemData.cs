@@ -18,6 +18,8 @@ public class ItemData : ScriptableObject
 
     public int usestool;
 
+    public string nametool;
+
     public enum ItemType
     {
         WaterBucket, Pitchfork, Rake, Scythe, Shovel, seed, seed2, potato

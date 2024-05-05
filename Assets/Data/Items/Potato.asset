@@ -17,4 +17,5 @@ MonoBehaviour:
   gameModel: {fileID: 0}
   Stackeable: 1
   usestool: 1
+  nametool: Potato
   itemType: 7

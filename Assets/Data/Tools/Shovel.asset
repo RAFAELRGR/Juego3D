@@ -17,4 +17,5 @@ MonoBehaviour:
   gameModel: {fileID: 0}
   Stackeable: 0
   usestool: 5
+  nametool: Shovel_001
   itemType: 4
