@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Sonido : MonoBehaviour
+public class Sonido 
 {
-    public new string name;
+    public string name;
     public AudioClip clip;
 }

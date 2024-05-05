@@ -1,18 +1,31 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static AudioManager Instance;
+    public Sonido[] sfxSounds;
+    public AudioSource sfxSource;
+
+
+    public void Start()
     {
-        
+        PlayMusic("aves");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayMusic(string name)
     {
-        
+        Sonido s = Array.Find(sfxSounds,x => x.name == name );
+        if( s != null )
+        {
+            Debug.Log("No se Encontro");
+        }
+        else
+        {
+            sfxSource.clip = s.clip;
+            sfxSource.Play();
+        }
     }
 }

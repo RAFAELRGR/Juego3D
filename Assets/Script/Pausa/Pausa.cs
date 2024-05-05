@@ -9,6 +9,7 @@ public class Pausa : MonoBehaviour
     public bool pausa = false;
     public GameObject MenuSalir;
     public GameObject PlayerInteraction;
+    public AudioSource aves;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,7 @@ public class Pausa : MonoBehaviour
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
                 PlayerInteraction.SetActive(false);
+                aves.Pause();
             }
             else if (pausa == true)
             {
@@ -53,6 +55,7 @@ public class Pausa : MonoBehaviour
         Time.timeScale = 1;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        aves.Play();
 
         PlayerInteraction.SetActive(true);
     }

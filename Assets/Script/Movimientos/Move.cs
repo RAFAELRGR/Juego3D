@@ -10,6 +10,7 @@ public class Move : MonoBehaviour
 
     Animator animator = new Animator();
 
+
     public float speed = 3f;
     public float gravity = -9.81f * 2;
     public float jumpHeight = 3f;
@@ -23,6 +24,7 @@ public class Move : MonoBehaviour
 
     private bool HActive;
     private bool VActive;
+
 
     PlayerInteraction playerInteraction;
 
@@ -61,11 +63,11 @@ public class Move : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
-            Interact();
+        Interact();
 
         playerInteraction = GetComponentInChildren<PlayerInteraction>();
 
-        if(Input.GetButtonDown("Horizontal"))
+        if (Input.GetButtonDown("Horizontal"))
         {
             if (VActive == false)
             {
@@ -83,7 +85,7 @@ public class Move : MonoBehaviour
         }
         if (Input.GetButtonUp("Horizontal"))
         {
-            HActive = false;    
+            HActive = false;
             if (VActive == false)
             {
                 pasos.Pause();
@@ -97,14 +99,36 @@ public class Move : MonoBehaviour
                 pasos.Pause();
             }
         }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            SaveData();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            CargarData();
+        }
+    }
+
+    private void CargarData()
+    {
+        PlayerData playerdata = SaveManager.LoadPlayerData();
+        transform.position = new Vector3(playerdata.position[0], playerdata.position[1], playerdata.position[2]);
+        Debug.Log("Datos Cargados");
+    }
+
+    private void SaveData()
+    {
+        SaveManager.savePlayerData1(this);
+        Debug.Log("Datos Guardados");
     }
 
     public void Interact()
-    {
+        {
             if (Input.GetButtonDown("Fire1"))
             {
                 playerInteraction.Interact();
             }
-    }
+        }
 
+    
 }
