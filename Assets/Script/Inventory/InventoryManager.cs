@@ -26,12 +26,12 @@ public class InventoryManager : MonoBehaviour
     }
     private void Update()
     {
-        if(Input.inputString != null)
+        if (Input.inputString != null)
         {
             bool isNumber = int.TryParse(Input.inputString, out int number);
-            if(isNumber && number > 0 && number < 7)
+            if (isNumber && number > 0 && number < 7)
             {
-                ChangeSelectedSlot(number+17);
+                ChangeSelectedSlot(number + 17);
             }
         }
 
@@ -44,7 +44,8 @@ public class InventoryManager : MonoBehaviour
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-        }else
+        }
+        else
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Confined;
@@ -54,7 +55,7 @@ public class InventoryManager : MonoBehaviour
 
     void ChangeSelectedSlot(int newValue)
     {
-        if(selectedSlot >= 0)
+        if (selectedSlot >= 0)
         {
             inventorySlot[selectedSlot].Deselect();
         }
@@ -82,7 +83,7 @@ public class InventoryManager : MonoBehaviour
         {
             InventorySlot slot = inventorySlot[i];
             InventoryItem iteminSlot = slot.GetComponentInChildren<InventoryItem>();
-            if(iteminSlot == null)
+            if (iteminSlot == null)
             {
                 SpawnNewItem(item, slot);
                 return true;
@@ -112,7 +113,7 @@ public class InventoryManager : MonoBehaviour
         if (iteminSlot != null)
         {
             ItemData itemData = iteminSlot.ItemData;
-            if(use == true)
+            if (use == true)
             {
                 itemData.usestool -= 1;
                 if (itemData.usestool <= 0)

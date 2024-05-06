@@ -1581,6 +1581,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: EmpezarJuego
       objectReference: {fileID: 0}
+    - target: {fileID: 372001789457762913, guid: 8ffe0ccf19bf90b4bbed1cdea8c3c794, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Proyecto
+      objectReference: {fileID: 0}
     - target: {fileID: 1934212530727334057, guid: 8ffe0ccf19bf90b4bbed1cdea8c3c794, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

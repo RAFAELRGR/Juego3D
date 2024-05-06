@@ -11,7 +11,7 @@ public class Shop : MonoBehaviour
     public bool option;
     public GameObject NohayPlata;
     public GameObject ConfirmacionCompra;
-    public bool selecteditem;
+    public bool confirmsell;
 
     public void removemoney(int value)
     {
@@ -43,27 +43,34 @@ public class Shop : MonoBehaviour
         }
     }
 
-    public void detecttype(ItemData itemType)
+    public void detecttype(string nametool)
     {
-        if (itemType == inventoryManager.GetSelectedItem(false))
+        if (nametool != null)
         {
-            selecteditem = true;
-        }
-        else
-        {
-            selecteditem = false;
+            if (InventoryManager.instance.GetSelectedItem(false) != null)
+            {
+                if (nametool == InventoryManager.instance.GetSelectedItem(false).nametool)
+                {
+                    confirmsell = true;
+                }
+                else if (nametool != InventoryManager.instance.GetSelectedItem(false).nametool || nametool == null)
+                {
+                    confirmsell = false;
+                }
+            }
         }
     }
 
     public void sellitem(int value)
     {
-        if (inventoryManager.GetSelectedItem(false) && selecteditem == true)
+        if (confirmsell == true)
         {
+            InventoryManager.instance.GetSelectedItem(false).usestool = 1;
             inventoryManager.GetSelectedItem(true);
             Money.instance2.money += value;
-        }else
+        }
+        else if (confirmsell == false)
         {
         }
     }
-
 }
