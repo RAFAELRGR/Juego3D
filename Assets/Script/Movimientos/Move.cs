@@ -99,27 +99,6 @@ public class Move : MonoBehaviour
                 pasos.Pause();
             }
         }
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            SaveData();
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            CargarData();
-        }
-    }
-
-    private void CargarData()
-    {
-        PlayerData playerdata = SaveManager.LoadPlayerData();
-        transform.position = new Vector3(playerdata.position[0], playerdata.position[1], playerdata.position[2]);
-        Debug.Log("Datos Cargados");
-    }
-
-    private void SaveData()
-    {
-        SaveManager.savePlayerData1(this);
-        Debug.Log("Datos Guardados");
     }
 
     public void Interact()

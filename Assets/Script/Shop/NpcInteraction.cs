@@ -3,7 +3,7 @@ using UnityEngine;
 public class NpcInteraction : MonoBehaviour
 {
     public GameObject TiendaUI;
-    private bool show = false;
+    public bool show = false;
     public MoveCamera move;
 
     // Se llama cuando otro objeto entra en el trigger
