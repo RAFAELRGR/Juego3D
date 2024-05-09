@@ -925,6 +925,8 @@ MonoBehaviour:
   m_loginUserNameInput: {fileID: 379171057}
   m_registerUI: {fileID: 964724269}
   m_loginUI: {fileID: 1016104318}
+  SistemaLogin: {fileID: 405818627}
+  MenuCanvas: {fileID: 882868781}
   m_text: {fileID: 350255836}
   m_userNameInput: {fileID: 16004071}
   m_passwordInput: {fileID: 983427381}

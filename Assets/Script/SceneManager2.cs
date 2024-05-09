@@ -11,6 +11,8 @@ public class SceneManager2 : MonoBehaviour
 
     [SerializeField] private GameObject m_registerUI = null;
     [SerializeField] private GameObject m_loginUI = null;
+    [SerializeField] private GameObject SistemaLogin = null;
+    [SerializeField] private GameObject MenuCanvas = null;
     [SerializeField] private Text m_text = null;
     [SerializeField] private InputField m_userNameInput = null;
     [SerializeField] private InputField m_passwordInput = null;
@@ -38,7 +40,13 @@ public class SceneManager2 : MonoBehaviour
         m_networkManager.LoginUser(m_loginUserNameInput.text, m_loginPasswordInput.text, delegate (Response response)
         {
             m_text.text = response.message;
+            if(response.done == true)
+            {
+                SistemaLogin.SetActive(false);
+                MenuCanvas.SetActive(true);
+            }
         });
+
     }
 
     public void SubmitRegister()

@@ -28,8 +28,9 @@ public class NetworkManager : MonoBehaviour
     private IEnumerator Co_LoginUser(string userName, string password, Action<Response> response)
     {
         string url = $"https://www.papalandia.somee.com/api/Users/Login?userName={userName}&password={password}";
+        WWWForm form = new WWWForm();
 
-        var download = UnityWebRequest.Get(url);
+        var download = UnityWebRequest.Post(url, form);
 
         yield return download.SendWebRequest();
 
