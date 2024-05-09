@@ -27,19 +27,35 @@ public class NetworkManager : MonoBehaviour
 
     private IEnumerator Co_LoginUser(string userName, string password, Action<Response> response)
     {
-        string url = $"https://www.papalandia.somee.com/api/Users";
-
-        WWWForm form = new WWWForm();
+        string url = $"https://www.papalandia.somee.com/api/Users/Login?userName={userName}&password={password}";
 
         var download = UnityWebRequest.Get(url);
 
         yield return download.SendWebRequest();
 
+        if (download.result != UnityWebRequest.Result.Success)
+        {
+            Debug.LogError("Error en la solicitud: " + download.error);
+            response(new Response { done = false, message = "Error en la solicitud: " + download.error });
+            yield break;
+        }
+
         string respuesta = download.downloadHandler.text;
 
-        Usuario user = JsonUtility.FromJson<Usuario>(respuesta);
-
+        // Verifica la respuesta del servidor
+        if (respuesta.ToLower().Contains("true"))
+        {
+            // Login exitoso
+            response(new Response { done = true, message = "Login exitoso" });
+        }
+        else
+        {
+            // Login fallido
+            response(new Response { done = false, message = "Credenciales incorrectas" });
+        }
     }
+
+
 
 }
 
