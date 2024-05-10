@@ -19,5 +19,5 @@ MonoBehaviour:
   usestool: 1
   nametool: Seeds_Green
   itemType: 6
-  daysToGrow: 40
+  daysToGrow: 20
   Moneyseed: 0

@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static Land;
-using static UnityEditor.Progress;
+
 
 public class FreeMoney : MonoBehaviour
 {

@@ -76,7 +76,7 @@ public class Land : MonoBehaviour
             InventoryManager.instance.GetSelectedItem(true);
         }
 
-        else if (recievedItem.itemType == ItemData.ItemType.seed && Input.GetKey(KeyCode.L))
+        else if (recievedItem.itemType == ItemData.ItemType.seed && Input.GetKey(KeyCode.E))
         {
             seedaplicated = true;
             stem.SetActive(true);
