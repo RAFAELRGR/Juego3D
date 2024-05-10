@@ -16,7 +16,7 @@ MonoBehaviour:
   thumbnail: {fileID: 21300000, guid: 4f1fcbdb21f420341adc4e814d4bc93a, type: 3}
   gameModel: {fileID: 138022, guid: 5531f4125b2228c46bdce8ab64c9f714, type: 3}
   Stackeable: 1
-  usestool: -2
+  usestool: 1
   nametool: Seeds_Blue
   itemType: 5
   daysToGrow: 30

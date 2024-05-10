@@ -15,7 +15,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
 
     public void InitialiseItem(ItemData itemData)
     {
-        if (itemData.itemType != ItemData.ItemType.potato && itemData.itemType != ItemData.ItemType.seed && itemData.itemType != ItemData.ItemType.seed2)
+        if (itemData.itemType != ItemData.ItemType.potato && itemData.itemType != ItemData.ItemType.seed && itemData.itemType != ItemData.ItemType.seed2 && itemData.itemType != ItemData.ItemType.seed3)
             ItemData = Instantiate(itemData);
         else
             ItemData = itemData;

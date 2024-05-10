@@ -26,6 +26,7 @@ public class Land : MonoBehaviour
     public ItemData itemtoPickUp;
     public SeedData seedData;
     public bool seedaplicated;
+    public bool scytheuse;
 
     // Start is called before the first frame update
     void Start()
@@ -74,26 +75,32 @@ public class Land : MonoBehaviour
         {
             SwitchLandStatus(LandStatus.land);
             InventoryManager.instance.GetSelectedItem(true);
+            scytheuse = true;
         }
 
-        else if (recievedItem.itemType == ItemData.ItemType.seed && Input.GetKey(KeyCode.E))
+        else if (recievedItem.itemType == ItemData.ItemType.seed || recievedItem.itemType == ItemData.ItemType.seed2 || recievedItem.itemType == ItemData.ItemType.seed3)
         {
-            seedaplicated = true;
-            stem.SetActive(true);
-            InventoryManager.instance.GetSelectedItem(true);
-            FieldInfo[] campos = typeof(SeedData).GetFields(BindingFlags.Public | BindingFlags.Instance);
-
-            foreach (FieldInfo campo in campos)
+            if (Input.GetKey(KeyCode.E) && scytheuse == true)
             {
-                if (campo.Name == "daysToGrow")
+                seedaplicated = true;
+                stem.SetActive(true);
+                InventoryManager.instance.GetSelectedItem(true);
+                FieldInfo[] campos = typeof(SeedData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+
+                foreach (FieldInfo campo in campos)
                 {
-                    timegrow = (int)campo.GetValue(recievedItem);
+                    if (campo.Name == "daysToGrow")
+                    {
+                        timegrow = (int)campo.GetValue(recievedItem);
+                    }
                 }
+                scytheuse = false;
             }
         }
 
         else if (landStatus == LandStatus.land && Input.GetKey(KeyCode.G) && recievedItem.itemType == ItemData.ItemType.WaterBucket && seedaplicated == true)
         {
+            InventoryManager.instance.GetSelectedItem(true);
             StartCoroutine(daystogrow(timegrow));
         }
 
@@ -124,7 +131,6 @@ public class Land : MonoBehaviour
         SwitchLandStatus(LandStatus.landready);
         stem.SetActive(false);
         flower.SetActive(true);
-        InventoryManager.instance.GetSelectedItem(true);
     }
 
 }
