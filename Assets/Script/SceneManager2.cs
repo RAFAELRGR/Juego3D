@@ -59,7 +59,7 @@ public class SceneManager2 : MonoBehaviour
 
         if(m_passwordInput.text  == m_reEnterPassword.text)
         {
-            m_text.text = " Procesando";
+            m_text.text = " Creado Correctamente";
 
             m_networkManager.CreateUser(m_userNameInput.text, m_emailInput.text, m_passwordInput.text, m_UserRolId, delegate(Response response)
             {

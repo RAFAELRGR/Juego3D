@@ -11,10 +11,16 @@ public class NetworkManager : MonoBehaviour
     }
     private IEnumerator Co_CreateUser(string userName, string email, string password, int userRolId, Action<Response> response)
     {
-        string url = $"https://www.papalandia.somee.com/api/Users/Create?userName={userName}&email={email}&password={password}&userRolId={userRolId}";
+        string url = $"http://www.papalandiagame.somee.com/api/Users/Create?userName={userName}&email={email}&password={password}&userRolId={userRolId}";
         WWWForm form = new WWWForm();
         var download = UnityWebRequest.Post(url, form);
         yield return download.SendWebRequest();
+        if (download.result != UnityWebRequest.Result.Success)
+        {
+            Debug.LogError("Error en la solicitud: " + download.error);
+            response(new Response { done = false, message = "Error en la solicitud: " + download.error });
+            yield break;
+        }
     }
     public void LoginUser(string userName, string password, Action<Response> response)
     {
@@ -23,7 +29,7 @@ public class NetworkManager : MonoBehaviour
 
     private IEnumerator Co_LoginUser(string userName, string password, Action<Response> response)
     {
-        string url = $"https://www.papalandia.somee.com/api/Users/Login?userName={userName}&password={password}";
+        string url = $"http://www.papalandiagame.somee.com/api/Users/Login?userName={userName}&password={password}";
         WWWForm form = new WWWForm();
 
         var download = UnityWebRequest.Post(url, form);
@@ -39,15 +45,13 @@ public class NetworkManager : MonoBehaviour
 
         string respuesta = download.downloadHandler.text;
 
-        // Verifica la respuesta del servidor
+
         if (respuesta.ToLower().Contains("true"))
         {
-            // Login exitoso
             response(new Response { done = true, message = "Login exitoso" });
         }
         else
         {
-            // Login fallido
             response(new Response { done = false, message = "Credenciales incorrectas" });
         }
     }
