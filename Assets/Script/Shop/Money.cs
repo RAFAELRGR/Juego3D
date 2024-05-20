@@ -17,7 +17,7 @@ public class Money : MonoBehaviour
         instance2 = this;
     }
 
-    public void UnlockAchievement()
+    public void Update()
     {
         if(money >= 80 && sendpost3 == false)
         {

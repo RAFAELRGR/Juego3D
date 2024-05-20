@@ -4,8 +4,9 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - AchivementManager: {fileID: 5619845446235452754, guid: 45260b9a0156f8d4585daba7d0a2c3be, type: 3}
-  - TextAchievement: {fileID: 7833829475499093301, guid: 09d7fed763a238640984a18ad7ad711f, type: 3}
+  - AchivementManager: {instanceID: 0}
+  - TextAchievement: {instanceID: 0}
+  - AchievementPost: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

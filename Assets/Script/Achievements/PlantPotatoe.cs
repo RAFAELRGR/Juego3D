@@ -26,6 +26,7 @@ public class PlantPotatoe : MonoBehaviour
 
         AchievementPost.CreateAchievemnt(AchievementUnlocked, AchievementId, GameId, delegate (Response response)
         {
+            Debug.Log(response);
         });
 
         AchivementManager.SetActive(true);
