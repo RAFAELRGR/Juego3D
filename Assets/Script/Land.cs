@@ -27,8 +27,12 @@ public class Land : MonoBehaviour
     public SeedData seedData;
     public bool seedaplicated;
     public bool scytheuse;
+    public static bool sendpost = false;
+    public static bool sendpost2 = false;
 
-    // Start is called before the first frame update
+    public PlantPotatoe PlantPotatoe;
+    public HarvestPotatoes HarvestPotatoes;
+
     void Start()
     {
         select = transform.Find("Cube").gameObject;
@@ -94,7 +98,14 @@ public class Land : MonoBehaviour
                         timegrow = (int)campo.GetValue(recievedItem);
                     }
                 }
+
                 scytheuse = false;
+
+                if(sendpost == false)
+                {
+                    PlantPotatoe.SendPost();
+                    sendpost = true;
+                }
             }
         }
 
@@ -121,6 +132,12 @@ public class Land : MonoBehaviour
             seedaplicated = false;
             seeds = null;
             InventoryManager.instance.GetSelectedItem(true);
+
+            if (sendpost2 == false)
+            {
+                HarvestPotatoes.SendPost();
+                sendpost2 = true;
+            }
         }
 
     }
